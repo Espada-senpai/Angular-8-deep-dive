@@ -1,0 +1,79 @@
+<h2>Template Driven Form</h2>
+
+<div class="debug">
+  <pre>{{data |json}}</pre>
+</div>
+
+<form #formInfo="ngForm" [class.submitted]="formInfo.submitted">
+
+  <fieldset>
+    <legend>Identité</legend>
+
+
+    <app-control label="Prénom">
+      <input [(ngModel)]="data.identity.firstname" type="text" name="firstname">
+    </app-control>
+    <app-control label="*Nom">
+      <input required minlength="2" type="text" [(ngModel)]="data.identity.lastname" name="lastname"
+    >
+    </app-control>
+    <app-control label="Email">
+      <input type="email" [(ngModel)]="data.identity.email" name="email" appEmailValidator>
+    </app-control>
+    <app-control label="Email">
+      <input type="tel" [(ngModel)]="data.identity.phone" name="phone">
+    </app-control>
+
+
+  </fieldset>
+
+  <fieldset ngModelGroup="shipping">
+    <legend>Adresse de livraison</legend>
+ 
+    <app-control label="Numéro et rue">
+      <input name="street" [(ngModel)]="data.shipping.street" type="text">
+    </app-control>
+    <app-control label="*Code postal">
+      <input pattern="[0-9]{4,5}" required name="zipcode" #zipcodeControl="ngModel" [(ngModel)]="data.shipping.zipcode" domain="gmail.com"
+        type="text">
+    </app-control>
+
+    <app-control label="*Ville">
+      <input required name="city" #villeControl="ngModel" [(ngModel)]="data.shipping.city" type="text">
+    </app-control>
+
+    <app-control label="Ville">
+      <input name="country" [(ngModel)]="data.shipping.country" type="text"></app-control>
+
+
+  </fieldset>
+<p>
+  <label>
+    <input type="checkbox" name="hasDistinctBilling" [(ngModel)]="data.hasDistinctBilling">Adresse de facturation différente</label>
+</p>
+  <fieldset *ngIf="data.hasDistinctBilling" ngModelGroup="billing">
+      <legend>Adresse de facturation</legend>
+  
+      <app-control label="Numéro et rue">
+        <input name="street" [(ngModel)]="data.billing.street" type="text">
+      </app-control>
+      <app-control label="*Code postal">
+        <input pattern="[0-9]{4,5}" required name="zipcode" #zipcodeControl="ngModel" [(ngModel)]="data.billing.zipcode"
+          type="text">
+      </app-control>
+  
+      <app-control label="*Ville">
+        <input required name="city" #villeControl="ngModel" [(ngModel)]="data.billing.city" type="text">
+      </app-control>
+  
+      <app-control label="Ville">
+        <input name="country" [(ngModel)]="data.billing.country" type="text"></app-control>
+
+    </fieldset>
+
+  <p>
+    <button [disabled]="formInfo.invalid && formInfo.submitted" type="submit">Envoyer</button>
+  </p>
+
+
+</form>

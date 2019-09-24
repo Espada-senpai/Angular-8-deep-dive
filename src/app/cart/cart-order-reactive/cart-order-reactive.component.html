@@ -1,0 +1,58 @@
+<h2>Template Reactive Form</h2>
+
+<div class="debug">
+  <pre> {{form.value |json}}</pre>
+</div>
+
+<form [formGroup]="form" [class.submitted]="submitted" (ngSubmit)="onSubmit()">
+  <fieldset formGroupName="identity">
+    <legend>Identité</legend>
+    <app-control label="Prénom">
+      <input type="text" formControlName="firstname">
+    </app-control>
+    <app-control label="*Nom">
+      <input type="text" formControlName="lastname">
+    </app-control>
+    <app-control label="Email">
+      <input type="email" formControlName="email">
+    </app-control>
+    <app-control label="Téléphone">
+      <input type="tel" formControlName="phone">
+    </app-control>
+  </fieldset>
+
+  <fieldset formGroupName="shipping">
+    <legend>Adresse de livraison</legend>
+    <app-control label="Numéro et rue">
+      <input type="text" formControlName="street">
+    </app-control>
+    <app-control label="*Code postal">
+      <input type="text" formControlName="zipcode">
+    </app-control>
+    <app-control label="*Ville" >
+      <input type="text" formControlName="city">
+    </app-control>
+    <app-control label="Pays">
+      <input type="text" formControlName="country">
+    </app-control>
+  </fieldset>
+<p> <label> <input type="checkbox" formControlName="hasDistinctBilling" (change)="toggleBilling()"> Billing ? </label></p>
+  <fieldset formGroupName="billing"  *ngIf="hasBilling()">
+      <legend>Adresse de livraison</legend>
+      <app-control label="Numéro et rue">
+        <input type="text" formControlName="street">
+      </app-control>
+      <app-control label="*Code postal">
+        <input type="text" formControlName="zipcode">
+      </app-control>
+      <app-control label="*Ville" >
+        <input type="text" formControlName="city">
+      </app-control>
+      <app-control label="Pays">
+        <input type="text" formControlName="country">
+      </app-control>
+    </fieldset>
+  <p>
+      <button [disabled]="isDisabled()" type="submit">Envoyer</button>
+    </p>
+</form>

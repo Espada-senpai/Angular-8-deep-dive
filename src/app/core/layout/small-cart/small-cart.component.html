@@ -1,0 +1,7 @@
+<span *ngIf="cart.isEmpty()">
+<img src="assets/img/cart-empty.png"> vide
+</span>
+
+<span *ngIf="!cart.isEmpty()">
+<img src="assets/img/cart-loaded.png"> ({{cart.count()}} art.) {{cart.total() |currency}}
+</span>

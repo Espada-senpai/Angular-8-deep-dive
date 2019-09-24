@@ -1,0 +1,13 @@
+nav  {
+    margin: 1.4vw 2vw 0vw 1vw;
+}
+nav a {
+    margin-left: 3vw;
+    color: white;
+}
+nav a.active {
+    color: red;
+    border-bottom: 2px;
+    color: darkred;
+    font-weight: bold;
+}

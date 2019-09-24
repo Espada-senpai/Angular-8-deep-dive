@@ -1,0 +1,7 @@
+
+<td> <a [routerLink]="['/catalog','book',book.getId()]"><img [src]="book.image"/> </a></td>
+<td>{{book.title}} </td>
+<td>{{book.author}} </td>
+<td>{{book.price |currency:'TND'}}  </td>
+<td> <app-rating [(value)]="book.rating" ></app-rating> </td>
+<td> <app-buy-button [book]="book"></app-buy-button></td>

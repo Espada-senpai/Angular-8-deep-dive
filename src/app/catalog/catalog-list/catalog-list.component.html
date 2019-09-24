@@ -1,0 +1,14 @@
+<table>
+    <tr>
+            <th></th>
+            <th>Titre</th>
+            <th>Auteur</th>
+            <th>Prix</th>
+            <th>Notes</th>
+            <th></th>
+            
+    </tr>
+    <tbody>
+            <tr *ngFor="let book of bookList$ |async" app-catalog-list-item [book]="book"></tr>
+    </tbody>
+</table>

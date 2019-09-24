@@ -1,0 +1,28 @@
+.toolbar {
+    height: 120px;
+    margin: -8px;
+    display: flex;
+    background-color: #1976d2;   
+    font-weight: bold;
+}
+
+.bookstore {
+    color: white;
+    width:100px;
+    height:1px;
+    animation:myfirst 2s;
+    -moz-animation:myfirst 2s infinite; /* Firefox */
+    -webkit-animation:myfirst 2s infinite; /* Safari and Chrome */
+}
+
+@-moz-keyframes myfirst /* Firefox */ {
+    0% {border-color:red;}
+    50% {border-color:rgba(255, 68, 0, 0.349);}
+    100% {border-color:red;}
+}
+
+@-webkit-keyframes myfirst /* Safari and Chrome */ {
+    0% {border-color:red;}
+    50% {border-color:rgba(255, 68, 0, 0.349);}
+    100% {border-color:red;}
+}

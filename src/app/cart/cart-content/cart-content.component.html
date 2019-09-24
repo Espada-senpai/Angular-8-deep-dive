@@ -1,0 +1,36 @@
+<table *ngIf="!cart.isEmpty()">
+        <thead>
+            <tr>
+                <th></th>
+                <th>Titre</th>
+                <th>Auteur</th>
+                <th>Prix</th>
+                <th>Quantité</th>
+                <th>Montant</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let row of cart.rows">
+            <td><img [src]="row.book.image"> </td>
+            <td>{{row.book.title}}</td>
+            <td>{{row.book.author}}</td>
+            <td>{{row.book.price|currency}}</td>
+            <td> <input type="number" [(ngModel)]= "row.quantity"> </td>
+            <td>{{row.amount()|currency}}</td>
+            <td>
+                <button (click)="cart.remove(row)">
+                    <img src="assets/img/cart-remove.png">
+                </button>
+            </td>
+        </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="3"></td>
+                <td>TOTAL :</td>
+                <td>{{cart.count()}} art.</td>
+                <td> {{cart.total()|currency}} </td>
+            </tr>
+        </tfoot>
+    </table>
